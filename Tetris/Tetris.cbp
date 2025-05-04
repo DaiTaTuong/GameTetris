@@ -33,11 +33,15 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="defs.h" />
+		<Unit filename="draw.cpp" />
+		<Unit filename="draw.h" />
 		<Unit filename="event.cpp" />
 		<Unit filename="event.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="renderer.cpp" />
 		<Unit filename="renderer.h" />
+		<Unit filename="tetromino.cpp" />
+		<Unit filename="tetromino.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

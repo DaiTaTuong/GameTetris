@@ -58,13 +58,13 @@ void Render::DrawGrid() {
     SDL_SetRenderDrawColor(renderer, 200, 200, 200, 255);
 
     // Vẽ đường dọc
-    for (int i = 0; i <= cols; ++i) {
+    for (int i = 0; i <= cols; i++) {
         int x = offsetX + i * cellSize;
         SDL_RenderDrawLine(renderer, x, offsetY, x, offsetY + gridHeight);
     }
 
     // Vẽ đường ngang
-    for (int i = 0; i <= rows; ++i) {
+    for (int i = 0; i <= rows; i++) {
         int y = offsetY + i * cellSize;
         SDL_RenderDrawLine(renderer, offsetX, y, offsetX + gridWidth, y);
     }

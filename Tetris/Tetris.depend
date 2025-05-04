@@ -1,0 +1,44 @@
+# depslib dependency file v1.0
+1746375469 source:d:\code_by_tuong\tetris\main.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	"defs.h"
+	<ctime>
+	"renderer.h"
+	"event.h"
+	"draw.h"
+
+1746167704 d:\code_by_tuong\tetris\defs.h
+
+1746344787 source:d:\code_by_tuong\tetris\renderer.cpp
+	<iostream>
+	"defs.h"
+	"renderer.h"
+
+1746197049 d:\code_by_tuong\tetris\renderer.h
+	<SDL.h>
+
+1746376876 source:d:\code_by_tuong\tetris\event.cpp
+	"event.h"
+
+1746343702 d:\code_by_tuong\tetris\event.h
+	"renderer.h"
+	<SDL.h>
+	"tetromino.h"
+
+1746376361 source:d:\code_by_tuong\tetris\tetromino.cpp
+	"tetromino.h"
+	<cstdlib>
+	<ctime>
+
+1746343280 d:\code_by_tuong\tetris\tetromino.h
+	<vector>
+
+1746376765 source:d:\code_by_tuong\tetris\draw.cpp
+	"draw.h"
+
+1746343280 d:\code_by_tuong\tetris\draw.h
+	<SDL.h>
+	"tetromino.h"
+

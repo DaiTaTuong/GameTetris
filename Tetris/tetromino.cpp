@@ -15,11 +15,14 @@ const vector<vector<vector<int>>> tetrominoShapes = {
 };
 
 Tetromino::Tetromino() {
-    static bool seeded = false;
+    static bool seeded = false; // Khi dùng static thì hàm srand chỉ được gọi đúng 1 lần khi mà random các khối tetromino
     if (!seeded) { srand(time(nullptr)); seeded = true; }
 
-    shape = tetrominoShapes[rand() % tetrominoShapes.size()];
-    x = 3; y = 0;
+    int idx = rand() % 7;
+    shape = tetrominoShapes[idx];
+    type = static_cast<TetrominoType>(idx);
+    x = 8;
+    y = 0 ;
 }
 
 Tetromino::Tetromino(vector<vector<int>> s, int startX)

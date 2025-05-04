@@ -3,8 +3,12 @@
 
 #include <vector>
 using namespace std ;
+enum TetrominoType {
+    I, O, T, S, Z, J, L
+}; // gán giá trị I=0, O =1 , T=2, ...
 struct Tetromino {
     vector<vector<int>> shape ;
+    TetrominoType type ;
     int x, y;
 
     Tetromino(); // random tetromino
