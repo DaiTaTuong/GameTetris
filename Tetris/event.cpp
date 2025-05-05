@@ -1,11 +1,12 @@
 #include "event.h"
+#include "logic.h"
 void HandleEvent(Render& render, Tetromino& current) {
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
         if (event.type == SDL_QUIT) {
             render.Stop();
         }
-            if (event.type == SDL_KEYDOWN) {
+            if (event.type == SDL_KEYDOWN && IsValidPosition(current)) {
             switch (event.key.keysym.sym) {
                 case SDLK_LEFT:
                     current.MoveLeft();

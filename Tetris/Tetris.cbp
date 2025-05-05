@@ -37,6 +37,8 @@
 		<Unit filename="draw.h" />
 		<Unit filename="event.cpp" />
 		<Unit filename="event.h" />
+		<Unit filename="logic.cpp" />
+		<Unit filename="logic.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="renderer.cpp" />
 		<Unit filename="renderer.h" />
