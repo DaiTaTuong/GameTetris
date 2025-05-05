@@ -22,17 +22,23 @@ int main(int argc, char* argv[])
 
         // Gọi MoveDown sau mỗi 500ms
         if (currentTime - lastFallTime > fallDelay) {
-            current.MoveDown();
-            lastFallTime = currentTime;
+        Tetromino temp = current;
+        temp.MoveDown();
+        if (IsValidPosition(temp)) {
+        current.MoveDown();
+        } else {
+        LockTetromino(current);
+        SpawnTetromino(current);
         }
-
+        lastFallTime = currentTime;
+}
         HandleEvent(render, current);
         render.Clear();
         render.DrawGrid();
         DrawTetromino(render.renderer, current);
+        DrawBoard(render.renderer) ;
         render.Present();
-        SDL_Delay(16);
-        cout << current.x << " " << current.y << endl ;
+        SDL_Delay(10);
     }
 
     return 0;

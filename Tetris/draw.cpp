@@ -1,5 +1,6 @@
 #include "draw.h"
     const int offsetY = 20;
+    const int offsetX = 150 ;
 SDL_Color GetTetrominoColor(const Tetromino& t) {
     switch (t.type) {
         case I: return {0, 255, 255};     // Cyan
@@ -31,8 +32,20 @@ void DrawTetromino(SDL_Renderer* renderer, const Tetromino& t) {
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < 4; ++j) {
             if (t.shape[i][j]) {
-                int px = (t.x + j) * BLOCK_SIZE;
+                int px = offsetX + (t.x + j) * BLOCK_SIZE;
                 int py = offsetY+ (t.y + i) * BLOCK_SIZE;
+                DrawBlock(renderer, px, py, color);
+            }
+        }
+    }
+}
+void DrawBoard(SDL_Renderer* renderer) {
+    for (int y = 0; y < BOARD_ROWS; ++y) {
+        for (int x = 0; x < BOARD_COLS; ++x) {
+            if (board[y][x]) {
+                SDL_Color color = {128, 128, 128}; // Màu xám cho khối cố định
+                int px = x * BLOCK_SIZE + offsetX;
+                int py = y * BLOCK_SIZE + offsetY;
                 DrawBlock(renderer, px, py, color);
             }
         }

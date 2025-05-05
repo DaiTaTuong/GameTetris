@@ -20,6 +20,27 @@ bool IsValidPosition(const Tetromino& t)
     }
     return true;
 }
+void ClearFullRows() {
+    for (int y = BOARD_ROWS - 1; y >= 0; --y) {
+        bool full = true;
+        for (int x = 0; x < BOARD_COLS; ++x) {
+            if (board[y][x] == 0) {
+                full = false;
+                break;
+            }
+        }
+
+        if (full) {
+            // Xóa hàng hiện tại bằng cách đẩy các hàng phía trên xuống
+            for (int row = y; row > 0; --row) {
+                board[row] = board[row - 1];
+            }
+            board[0] = vector<int>(BOARD_COLS, 0); // Hàng trên cùng là hàng trống
+            y++; // Kiểm tra lại hàng này vì đã có hàng mới đẩy xuống
+        }
+    }
+}
+
 void LockTetromino(const Tetromino& t) {
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < 4; ++j) {
@@ -32,6 +53,7 @@ void LockTetromino(const Tetromino& t) {
             }
         }
     }
+    ClearFullRows() ;
 }
 
 void SpawnTetromino(Tetromino& current) {

@@ -12,4 +12,5 @@ extern vector<vector<int>> board;
 bool IsValidPosition(const Tetromino& t);
 void LockTetromino(const Tetromino& t);
 void SpawnTetromino(Tetromino& current);
+void ClearFullRows() ;
 #endif // LOGIC_H
