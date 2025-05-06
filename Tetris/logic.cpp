@@ -20,6 +20,7 @@ bool IsValidPosition(const Tetromino& t)
     }
     return true;
 }
+
 void ClearFullRows() {
     for (int y = BOARD_ROWS - 1; y >= 0; --y) {
         bool full = true;
@@ -59,3 +60,33 @@ void LockTetromino(const Tetromino& t) {
 void SpawnTetromino(Tetromino& current) {
     current = Tetromino();
 }
+void MoveTetromino(Tetromino& current, Uint32& lastFallTime, Uint32 fallDelay) {
+    Uint32 currentTime = SDL_GetTicks();
+    if (currentTime - lastFallTime > fallDelay) {
+        Tetromino temp = current;
+        temp.MoveDown();
+
+        if (IsValidPosition(temp)) {
+            current.MoveDown();
+        } else {
+            LockTetromino(current);
+            SpawnTetromino(current);
+        }
+
+        lastFallTime = currentTime;
+    }
+}
+void DropTetromino(Tetromino& current) {
+    while (true) {
+        current.MoveDown();
+        if (!IsValidPosition(current)) {
+            current.y--; // quay lại vị trí hợp lệ cuối cùng
+            break;
+        }
+    }
+    LockTetromino(current);
+    SpawnTetromino(current);
+}
+
+
+

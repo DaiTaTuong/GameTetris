@@ -30,34 +30,10 @@ if (event.type == SDL_KEYDOWN) {
             temp.RotateClockwise();
             if (IsValidPosition(temp)) current.RotateClockwise();
             break;
+        case SDLK_SPACE:
+            DropTetromino(current) ;
+            break ;
     }
 }
     }
 }
-
-
-        /*
-            if (event.type == SDL_KEYDOWN ) {
-            switch (event.key.keysym.sym) {
-                case SDLK_LEFT:
-                    current.MoveLeft();
-                    break;
-                case SDLK_RIGHT:
-                    current.MoveRight();
-                    break;
-                case SDLK_DOWN:
-                    current.MoveDown();
-                    break;
-                case SDLK_z:
-                    current.RotateCounterClockwise();
-                    break;
-                case SDLK_UP:
-                    current.RotateClockwise();
-                    break;
-        }
-    }
-}
-}
-
-*/
-

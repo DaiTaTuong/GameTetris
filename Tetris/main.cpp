@@ -13,25 +13,11 @@ int main(int argc, char* argv[])
 {
     Render render(SCREEN_WIDTH, SCREEN_HEIGHT);
     Tetromino current;
-
-    Uint32 lastFallTime = SDL_GetTicks(); // lastFallTime không thay đổi theo thời gian, chỉ thay đổi khi bên trong if là đúng
+    Uint32 lastFallTime = SDL_GetTicks() ;
     const Uint32 fallDelay = 500;
 
     while (render.IsRunning()) {
-        Uint32 currentTime = SDL_GetTicks(); // currentTime thay đổi theo thời gian bởi vì nằm trong while(render.isRunning), được gọi liên tục.
-
-        // Gọi MoveDown sau mỗi 500ms
-        if (currentTime - lastFallTime > fallDelay) {
-        Tetromino temp = current;
-        temp.MoveDown();
-        if (IsValidPosition(temp)) {
-        current.MoveDown();
-        } else {
-        LockTetromino(current);
-        SpawnTetromino(current);
-        }
-        lastFallTime = currentTime;
-}
+        MoveTetromino(current,lastFallTime,fallDelay) ;
         HandleEvent(render, current);
         render.Clear();
         render.DrawGrid();
