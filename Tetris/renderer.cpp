@@ -36,8 +36,43 @@ void Render::Clear() {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
 }
+void Render::DrawBox(int x, int y, int w, int h, SDL_Color borderColor, SDL_Color fillColor) {
+    SDL_Rect rect = {x, y, w, h};
+    SDL_SetRenderDrawColor(renderer, fillColor.r, fillColor.g, fillColor.b, fillColor.a);
+    SDL_RenderFillRect(renderer, &rect);
+    SDL_SetRenderDrawColor(renderer, borderColor.r, borderColor.g, borderColor.b, borderColor.a);
+    SDL_RenderDrawRect(renderer, &rect);
+}
 
+void Render::DrawSidePanels() {
+    // Thông số kích thước
+    const int boxWidth = 150;
+    const int boxHeight = 120;
+    const int margin = 20;
+    const int spacing = 20;
+    const int offsetX = (SCREEN_WIDTH - 10 * 30) / 2;
+
+    // Tọa độ các khung
+    int nextX = offsetX + 10 * 30 + margin;
+    int holdX = offsetX - boxWidth - margin;
+    int boxY1 = 50;
+    int boxY2 = boxY1 + boxHeight + spacing;
+    int boxY3 = boxY2 + boxHeight + spacing;
+
+    // Vẽ khung "Next"
+    DrawBox(nextX, boxY1, boxWidth, boxHeight,
+            {255, 255, 255, 255}, {20, 20, 20, 255});
+
+    // Vẽ khung "Score"
+    DrawBox(nextX, boxY2, boxWidth, boxHeight,
+            {255, 255, 255, 255}, {20, 20, 20, 255});
+
+    // Vẽ khung "Hold"
+    DrawBox(holdX, boxY1, boxWidth, boxHeight,
+            {255, 255, 255, 255}, {20, 20, 20, 255});
+}
 void Render::Present() {
+    DrawSidePanels() ;
     SDL_RenderPresent(renderer);
 }
 bool Render::IsRunning() const {
@@ -69,6 +104,8 @@ void Render::DrawGrid() {
         SDL_RenderDrawLine(renderer, offsetX, y, offsetX + gridWidth, y);
     }
 }
+
+
 
 
 

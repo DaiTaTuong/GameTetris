@@ -12,6 +12,8 @@ struct Render
     void Present();
     bool IsRunning() const;
     void DrawGrid() ;
+    void DrawBox(int x, int y, int w, int h, SDL_Color borderColor, SDL_Color fillColor) ;
+    void DrawSidePanels() ;
     void Stop();
 };
 #endif // Renderer_H

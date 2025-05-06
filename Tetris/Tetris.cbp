@@ -40,6 +40,8 @@
 		<Unit filename="logic.cpp" />
 		<Unit filename="logic.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="rand_modern.cpp" />
+		<Unit filename="rand_modern.h" />
 		<Unit filename="renderer.cpp" />
 		<Unit filename="renderer.h" />
 		<Unit filename="tetromino.cpp" />

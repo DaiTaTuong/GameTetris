@@ -1,7 +1,6 @@
 #include "tetromino.h"
 #include <cstdlib>
-#include <ctime>
-
+#include "rand_modern.h"
 using namespace std;
 
 const vector<vector<vector<int>>> tetrominoShapes = {
@@ -15,10 +14,7 @@ const vector<vector<vector<int>>> tetrominoShapes = {
 };
 
 Tetromino::Tetromino() {
-    static bool seeded = false; // Khi dùng static thì hàm srand chỉ được gọi đúng 1 lần khi mà random các khối tetromino
-    if (!seeded) { srand(time(nullptr)); seeded = true; }
-
-    int idx = rand() % 7;
+    int idx = getNextTetrominoType() ;
     shape = tetrominoShapes[idx];
     type = static_cast<TetrominoType>(idx);
     x = 3;
