@@ -45,7 +45,7 @@
 1746545651 source:d:\code_by_tuong\gametetris\tetris\draw.cpp
 	"draw.h"
 
-1746545854 d:\code_by_tuong\gametetris\tetris\draw.h
+1746580740 d:\code_by_tuong\gametetris\tetris\draw.h
 	<SDL.h>
 	"tetromino.h"
 	"logic.h"
@@ -62,10 +62,10 @@
 	<SDL.h>
 	"tetromino.h"
 
-1746542442 d:\code_by_tuong\gametetris\tetris\renderer.h
+1746718903 d:\code_by_tuong\gametetris\tetris\renderer.h
 	<SDL.h>
 
-1746545658 source:d:\code_by_tuong\gametetris\tetris\main.cpp
+1746577209 source:d:\code_by_tuong\gametetris\tetris\main.cpp
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -78,10 +78,11 @@
 
 1746523939 d:\code_by_tuong\gametetris\tetris\defs.h
 
-1746544674 source:d:\code_by_tuong\gametetris\tetris\renderer.cpp
+1746720169 source:d:\code_by_tuong\gametetris\tetris\renderer.cpp
 	<iostream>
 	"defs.h"
 	"renderer.h"
+	<SDL_image.h>
 
 1746543762 source:d:\code_by_tuong\gametetris\tetris\tetromino.cpp
 	"tetromino.h"

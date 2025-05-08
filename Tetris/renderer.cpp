@@ -1,6 +1,7 @@
 #include<iostream>
 #include "defs.h"
 #include "renderer.h"
+#include<SDL_image.h>
 using namespace std ;
 
 Render::Render(int width, int height) {
@@ -22,6 +23,11 @@ Render::Render(int width, int height) {
         std::cerr << "Renderer Error: " << SDL_GetError() << std::endl;
         return;
     }
+    texture = IMG_LoadTexture(renderer, "ChatNgu.png") ;
+    if(!texture)
+    {
+        std::cerr << "BackGround Error:" << SDL_GetError() << std::endl ;
+    }
 
     running = true;
 }
@@ -29,12 +35,13 @@ Render::Render(int width, int height) {
 Render::~Render() {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
+    SDL_DestroyTexture(texture) ;
     SDL_Quit();
 }
 
 void Render::Clear() {
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
+    SDL_RenderCopy(renderer,texture,nullptr,nullptr) ;
 }
 void Render::DrawBox(int x, int y, int w, int h, SDL_Color borderColor, SDL_Color fillColor) {
     SDL_Rect rect = {x, y, w, h};
@@ -90,7 +97,7 @@ void Render::DrawGrid() {
     const int offsetX = (SCREEN_WIDTH - gridWidth) / 2;
     const int offsetY = 20;
 
-    SDL_SetRenderDrawColor(renderer, 200, 200, 200, 255);
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
     // Vẽ đường dọc
     for (int i = 0; i <= cols; i++) {

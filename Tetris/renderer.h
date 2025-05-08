@@ -5,6 +5,7 @@ struct Render
 {
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
+    SDL_Texture* texture = nullptr ;
     bool running = false ;
     Render(int width, int height);
     ~Render();
