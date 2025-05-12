@@ -50,22 +50,22 @@
 	"tetromino.h"
 	"logic.h"
 
-1746343280 d:\code_by_tuong\gametetris\tetris\tetromino.h
+1747039750 d:\code_by_tuong\gametetris\tetris\tetromino.h
 	<vector>
 
-1746526262 source:d:\code_by_tuong\gametetris\tetris\event.cpp
+1747062440 source:d:\code_by_tuong\gametetris\tetris\event.cpp
 	"event.h"
 	"logic.h"
 
-1746343702 d:\code_by_tuong\gametetris\tetris\event.h
+1747062433 d:\code_by_tuong\gametetris\tetris\event.h
 	"renderer.h"
 	<SDL.h>
 	"tetromino.h"
 
-1746718903 d:\code_by_tuong\gametetris\tetris\renderer.h
+1747063204 d:\code_by_tuong\gametetris\tetris\renderer.h
 	<SDL.h>
 
-1746577209 source:d:\code_by_tuong\gametetris\tetris\main.cpp
+1747062445 source:d:\code_by_tuong\gametetris\tetris\main.cpp
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -75,24 +75,26 @@
 	"event.h"
 	"draw.h"
 	"logic.h"
+	"menu.h"
 
 1746523939 d:\code_by_tuong\gametetris\tetris\defs.h
 
-1746720169 source:d:\code_by_tuong\gametetris\tetris\renderer.cpp
+1746857087 source:d:\code_by_tuong\gametetris\tetris\renderer.cpp
 	<iostream>
 	"defs.h"
 	"renderer.h"
 	<SDL_image.h>
+	<SDL_ttf.h>
 
 1746543762 source:d:\code_by_tuong\gametetris\tetris\tetromino.cpp
 	"tetromino.h"
 	<cstdlib>
 	"rand_modern.h"
 
-1746526140 source:d:\code_by_tuong\gametetris\tetris\logic.cpp
+1747017548 source:d:\code_by_tuong\gametetris\tetris\logic.cpp
 	"logic.h"
 
-1746526140 d:\code_by_tuong\gametetris\tetris\logic.h
+1747062017 d:\code_by_tuong\gametetris\tetris\logic.h
 	<vector>
 	"tetromino.h"
 	<SDL.h>
@@ -105,4 +107,12 @@
 	<SDL.h>
 
 1746543688 d:\code_by_tuong\gametetris\tetris\rand_modern.h
+
+1747061715 source:d:\code_by_tuong\gametetris\tetris\menu.cpp
+	"menu.h"
+	<iostream>
+
+1747035372 d:\code_by_tuong\gametetris\tetris\menu.h
+	<SDL_ttf.h>
+	"renderer.h"
 

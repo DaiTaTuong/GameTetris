@@ -1,3 +1,4 @@
+
 #include "event.h"
 #include "logic.h"
 void HandleEvent(Render& render, Tetromino& current) {
@@ -37,3 +38,4 @@ if (event.type == SDL_KEYDOWN) {
 }
     }
 }
+

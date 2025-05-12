@@ -2,6 +2,7 @@
 #include "defs.h"
 #include "renderer.h"
 #include<SDL_image.h>
+#include<SDL_ttf.h>
 using namespace std ;
 
 Render::Render(int width, int height) {
@@ -26,8 +27,12 @@ Render::Render(int width, int height) {
     texture = IMG_LoadTexture(renderer, "ChatNgu.png") ;
     if(!texture)
     {
-        std::cerr << "BackGround Error:" << SDL_GetError() << std::endl ;
+        std::cerr << "Texture Error:" << SDL_GetError() << std::endl ;
     }
+    if (TTF_Init() == -1) {
+    std::cerr << "TTF Error: " << TTF_GetError() << std::endl;
+}
+
 
     running = true;
 }
@@ -36,6 +41,7 @@ Render::~Render() {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_DestroyTexture(texture) ;
+    TTF_Quit() ;
     SDL_Quit();
 }
 
@@ -111,6 +117,7 @@ void Render::DrawGrid() {
         SDL_RenderDrawLine(renderer, offsetX, y, offsetX + gridWidth, y);
     }
 }
+
 
 
 

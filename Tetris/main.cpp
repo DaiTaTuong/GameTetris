@@ -7,7 +7,7 @@
 #include "event.h"
 #include "draw.h"
 #include "logic.h"
-using namespace std ;
+#include "menu.h"
 
 int main(int argc, char* argv[])
 {
