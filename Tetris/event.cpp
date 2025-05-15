@@ -38,4 +38,17 @@ if (event.type == SDL_KEYDOWN) {
 }
     }
 }
+bool HandleMenuEvents(bool& quit) {
+    SDL_Event e;
+    while (SDL_WaitEvent(&e)) {
+        if (e.type == SDL_QUIT) {
+            quit = true;
+            return false; // Thoát luôn
+        }
+        if (e.type == SDL_KEYDOWN || e.type == SDL_MOUSEBUTTONDOWN) {
+            return true;
+        }
+    }
+    return false;
+}
 

@@ -7,11 +7,19 @@
 #include "event.h"
 #include "draw.h"
 #include "logic.h"
-#include "menu.h"
 
 int main(int argc, char* argv[])
 {
     Render render(SCREEN_WIDTH, SCREEN_HEIGHT);
+    SDL_Texture* menuTexture = nullptr ;
+     render.CreateMenu(render.renderer, menuTexture);
+
+    // Chờ người chơi nhấn phím hoặc chuột để bắt đầu
+    bool quit = false;
+    if (!HandleMenuEvents(quit)) {
+        // Nếu người chơi nhấn nút đóng cửa sổ
+        return 0;
+    }
     Tetromino current;
     Uint32 lastFallTime = SDL_GetTicks() ;
     const Uint32 fallDelay = 500;

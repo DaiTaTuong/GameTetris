@@ -117,6 +117,52 @@ void Render::DrawGrid() {
         SDL_RenderDrawLine(renderer, offsetX, y, offsetX + gridWidth, y);
     }
 }
+void Render::CreateMenu(SDL_Renderer* renderer1, SDL_Texture*& texture1)
+{
+    font = TTF_OpenFont("Roboto.ttf", 48);
+    if (!font)
+    {
+        std::cerr << "Could not open Font: " << TTF_GetError() << std::endl;
+        return;
+    }
+
+    texture1 = IMG_LoadTexture(renderer1, "Menu.png");
+    if (!texture1)
+    {
+        std::cerr << "Could not load background image: " << IMG_GetError() << std::endl;
+        return;
+    }
+
+    SDL_RenderClear(renderer1);
+    SDL_RenderCopy(renderer1, texture1, NULL, NULL);
+
+    SDL_Color textColor = {255, 255, 255, 255};
+    SDL_Surface* textSurface = TTF_RenderText_Solid(font, "Nicee", textColor);
+    if (!textSurface)
+    {
+        std::cerr << "Could not create text surface: " << TTF_GetError() << std::endl;
+        return;
+    }
+
+    SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer1, textSurface);
+    if (!textTexture)
+    {
+        std::cerr << "Could not create text texture: " << SDL_GetError() << std::endl;
+        SDL_FreeSurface(textSurface);
+        return;
+    }
+
+    int textWidth = textSurface->w;
+    int textHeight = textSurface->h;
+    SDL_FreeSurface(textSurface);
+
+    SDL_Rect textRect = {230, 150, textWidth, textHeight};
+    SDL_RenderCopy(renderer1, textTexture, NULL, &textRect);
+
+    SDL_RenderPresent(renderer1);
+
+    SDL_DestroyTexture(textTexture);
+}
 
 
 
