@@ -3,7 +3,6 @@
 #include "renderer.h"
 #include<SDL_image.h>
 #include<SDL_ttf.h>
-using namespace std ;
 
 Render::Render(int width, int height) {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -162,6 +161,8 @@ void Render::CreateMenu(SDL_Renderer* renderer1, SDL_Texture*& texture1)
     SDL_RenderPresent(renderer1);
 
     SDL_DestroyTexture(textTexture);
+
+    TTF_CloseFont(font) ;
 }
 
 

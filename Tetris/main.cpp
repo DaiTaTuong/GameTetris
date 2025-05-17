@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
     }
     Tetromino current;
     Uint32 lastFallTime = SDL_GetTicks() ;
-    const Uint32 fallDelay = 500;
+    const Uint32 fallDelay = 1000;
 
     while (render.IsRunning()) {
         MoveTetromino(current,lastFallTime,fallDelay) ;
