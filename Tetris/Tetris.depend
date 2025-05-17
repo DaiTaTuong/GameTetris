@@ -79,7 +79,7 @@
 
 1746523939 d:\code_by_tuong\gametetris\tetris\defs.h
 
-1747363402 source:d:\code_by_tuong\gametetris\tetris\renderer.cpp
+1747469816 source:d:\code_by_tuong\gametetris\tetris\renderer.cpp
 	<iostream>
 	"defs.h"
 	"renderer.h"
