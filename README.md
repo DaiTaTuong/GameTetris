@@ -1,6 +1,6 @@
 ## <p align="center"> Làm Game Xếp Hình Bằng C++ </p>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/DaiTaTuong/PicTureOfTetris/b1b66e19c44e7a71f4d1c07bdad3d8c9b8c63ea5/Menu.png
+  <img src="https://github.com/DaiTaTuong/PicTureOfTetris/blob/c7cebaed7673ec12ed912681da6903760eecddc6/z6622165753263_3896f65f70af275c49dd7929a44cae66.jpg
   " alt="Menu" />
 </p>
 
