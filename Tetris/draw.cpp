@@ -51,3 +51,21 @@ void DrawBoard(SDL_Renderer* renderer) {
         }
     }
 }
+void DrawMiniTetromino(SDL_Renderer* renderer, const Tetromino& t, int startX, int startY, int cellSize) {
+    SDL_Color color = GetTetrominoColor(t);
+    for (int i = 0; i < 4; ++i) {
+        for (int j = 0; j < 4; ++j) {
+            if (t.shape[i][j]) {
+                int px = startX + j * cellSize;
+                int py = startY + i * cellSize;
+                SDL_Rect rect = {px, py, cellSize, cellSize};
+
+                SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 255);
+                SDL_RenderFillRect(renderer, &rect);
+                SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // viền đen
+                SDL_RenderDrawRect(renderer, &rect);
+            }
+        }
+    }
+}
+

@@ -3,7 +3,8 @@
 #include "renderer.h"
 #include<SDL_image.h>
 #include<SDL_ttf.h>
-
+#include "logic.h"
+#include "draw.h"
 Render::Render(int width, int height) {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cerr << "SDL Init Error: " << SDL_GetError() << std::endl;
@@ -31,7 +32,12 @@ Render::Render(int width, int height) {
     if (TTF_Init() == -1) {
     std::cerr << "TTF Error: " << TTF_GetError() << std::endl;
 }
-
+    font = TTF_OpenFont("Roboto.ttf", 24);
+    if (!font)
+    {
+        std::cerr << "Could not open Font: " << TTF_GetError() << std::endl;
+        return;
+    }
 
     running = true;
 }
@@ -40,6 +46,7 @@ Render::~Render() {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_DestroyTexture(texture) ;
+    TTF_CloseFont(font) ;
     TTF_Quit() ;
     SDL_Quit();
 }
@@ -54,6 +61,15 @@ void Render::DrawBox(int x, int y, int w, int h, SDL_Color borderColor, SDL_Colo
     SDL_RenderFillRect(renderer, &rect);
     SDL_SetRenderDrawColor(renderer, borderColor.r, borderColor.g, borderColor.b, borderColor.a);
     SDL_RenderDrawRect(renderer, &rect);
+}
+void Render::RenderText(const std::string& text, int x, int y) {
+    SDL_Color color = {255, 255, 255, 255};
+    SDL_Surface* surface = TTF_RenderText_Solid(font, text.c_str(), color);
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_Rect dstRect = {x, y, surface->w, surface->h};
+    SDL_FreeSurface(surface);
+    SDL_RenderCopy(renderer, texture, nullptr, &dstRect);
+    SDL_DestroyTexture(texture);
 }
 
 void Render::DrawSidePanels() {
@@ -74,14 +90,20 @@ void Render::DrawSidePanels() {
     // Vẽ khung "Next"
     DrawBox(nextX, boxY1, boxWidth, boxHeight,
             {255, 255, 255, 255}, {20, 20, 20, 255});
+    extern Tetromino nextTetromino; // include nếu cần
+    DrawMiniTetromino(renderer, nextTetromino, nextX + 20, boxY1 + 20);
 
+    RenderText("Next", nextX + 40, boxY1 + 10);
     // Vẽ khung "Score"
     DrawBox(nextX, boxY2, boxWidth, boxHeight,
             {255, 255, 255, 255}, {20, 20, 20, 255});
-
+    RenderText("Score", nextX + 40, boxY2 + 10);
+    RenderText(std::to_string(score), nextX + 40, boxY2 + 50);
     // Vẽ khung "Hold"
     DrawBox(holdX, boxY1, boxWidth, boxHeight,
             {255, 255, 255, 255}, {20, 20, 20, 255});
+    RenderText("Hold", holdX + 50, boxY1 + 10);
+
 }
 void Render::Present() {
     DrawSidePanels() ;
@@ -118,13 +140,6 @@ void Render::DrawGrid() {
 }
 void Render::CreateMenu(SDL_Renderer* renderer1, SDL_Texture*& texture1)
 {
-    font = TTF_OpenFont("Roboto.ttf", 48);
-    if (!font)
-    {
-        std::cerr << "Could not open Font: " << TTF_GetError() << std::endl;
-        return;
-    }
-
     texture1 = IMG_LoadTexture(renderer1, "Menu.png");
     if (!texture1)
     {
@@ -135,34 +150,10 @@ void Render::CreateMenu(SDL_Renderer* renderer1, SDL_Texture*& texture1)
     SDL_RenderClear(renderer1);
     SDL_RenderCopy(renderer1, texture1, NULL, NULL);
 
-    SDL_Color textColor = {255, 255, 255, 255};
-    SDL_Surface* textSurface = TTF_RenderText_Solid(font, "Nicee", textColor);
-    if (!textSurface)
-    {
-        std::cerr << "Could not create text surface: " << TTF_GetError() << std::endl;
-        return;
-    }
-
-    SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer1, textSurface);
-    if (!textTexture)
-    {
-        std::cerr << "Could not create text texture: " << SDL_GetError() << std::endl;
-        SDL_FreeSurface(textSurface);
-        return;
-    }
-
-    int textWidth = textSurface->w;
-    int textHeight = textSurface->h;
-    SDL_FreeSurface(textSurface);
-
-    SDL_Rect textRect = {230, 150, textWidth, textHeight};
-    SDL_RenderCopy(renderer1, textTexture, NULL, &textRect);
 
     SDL_RenderPresent(renderer1);
 
-    SDL_DestroyTexture(textTexture);
 
-    TTF_CloseFont(font) ;
 }
 
 

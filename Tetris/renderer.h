@@ -2,6 +2,7 @@
 #define Renderer_H
 #include<SDL.h>
 #include<SDL_ttf.h>
+#include<string>
 struct Render
 {
     SDL_Window* window = nullptr;
@@ -16,6 +17,7 @@ struct Render
     bool IsRunning() const;
     void DrawGrid() ;
     void DrawBox(int x, int y, int w, int h, SDL_Color borderColor, SDL_Color fillColor) ;
+    void RenderText(const std::string& text, int x, int y) ;
     void DrawSidePanels() ;
     void Stop();
     void CreateMenu(SDL_Renderer* renderer, SDL_Texture*& texture1) ;

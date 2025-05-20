@@ -8,7 +8,8 @@ const int BOARD_ROWS = 20;
 const int BOARD_COLS = 10;
 // Quy ước ô có giá trị 0 là rỗng còn ô có giá trị 1 là đã bị chiếm
 extern std::vector<std::vector<int>> board;
-
+extern Tetromino nextTetromino;
+extern int score;
 bool IsValidPosition(const Tetromino& t);
 void MoveTetromino(Tetromino& current, Uint32& lastFallTime, Uint32 fallDelay);
 void LockTetromino(const Tetromino& t);
