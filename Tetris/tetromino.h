@@ -9,7 +9,6 @@ struct Tetromino {
     std::vector<std::vector<int>> shape ;
     TetrominoType type ;
     int x, y;
-
     Tetromino(); // random tetromino
     Tetromino(std::vector<std::vector<int>> s, int startX);
 

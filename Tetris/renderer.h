@@ -3,12 +3,14 @@
 #include<SDL.h>
 #include<SDL_ttf.h>
 #include<string>
+#include<SDL_mixer.h>
 struct Render
 {
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
     SDL_Texture* texture = nullptr ;
     TTF_Font* font = nullptr ;
+    Mix_Music* backGroundMusic = nullptr ;
     bool running = false ;
     Render(int width, int height);
     ~Render();

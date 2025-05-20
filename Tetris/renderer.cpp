@@ -5,6 +5,7 @@
 #include<SDL_ttf.h>
 #include "logic.h"
 #include "draw.h"
+#include<SDL_mixer.h>
 Render::Render(int width, int height) {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cerr << "SDL Init Error: " << SDL_GetError() << std::endl;
@@ -38,7 +39,15 @@ Render::Render(int width, int height) {
         std::cerr << "Could not open Font: " << TTF_GetError() << std::endl;
         return;
     }
-
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+    std::cerr << "SDL_mixer could not open: " << Mix_GetError() << std::endl;
+}
+    backGroundMusic = Mix_LoadMUS("SoundTetris.mp3") ;
+    if (!backGroundMusic) {
+    std::cerr << "Không thể tải nhạc nền: " << Mix_GetError() << std::endl;
+} else {
+    Mix_PlayMusic(backGroundMusic, -1);
+}
     running = true;
 }
 
@@ -48,6 +57,8 @@ Render::~Render() {
     SDL_DestroyTexture(texture) ;
     TTF_CloseFont(font) ;
     TTF_Quit() ;
+    Mix_FreeMusic(backGroundMusic) ;
+    Mix_CloseAudio() ;
     SDL_Quit();
 }
 
@@ -90,7 +101,6 @@ void Render::DrawSidePanels() {
     // Vẽ khung "Next"
     DrawBox(nextX, boxY1, boxWidth, boxHeight,
             {255, 255, 255, 255}, {20, 20, 20, 255});
-    extern Tetromino nextTetromino; // include nếu cần
     DrawMiniTetromino(renderer, nextTetromino, nextX + 20, boxY1 + 20);
 
     RenderText("Next", nextX + 40, boxY1 + 10);
@@ -103,6 +113,7 @@ void Render::DrawSidePanels() {
     DrawBox(holdX, boxY1, boxWidth, boxHeight,
             {255, 255, 255, 255}, {20, 20, 20, 255});
     RenderText("Hold", holdX + 50, boxY1 + 10);
+    DrawMiniTetromino(renderer, heldTetromino, holdX + 40, boxY1 + 30 ) ;
 
 }
 void Render::Present() {
