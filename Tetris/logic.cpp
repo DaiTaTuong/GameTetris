@@ -4,9 +4,9 @@ std::vector<std::vector<int>> board(BOARD_ROWS, std::vector<int>(BOARD_COLS, 0))
 int score = 0 ;
 int level = 0 ;
 Tetromino nextTetromino = Tetromino();
-Tetromino heldTetromino ;
-bool hasHeldThisTurn = false;
-bool isHoldEmpty = true;
+//Tetromino heldTetromino ;
+//bool hasHeldThisTurn = false;
+//bool isHoldEmpty = true;
 bool IsValidPosition(const Tetromino& t)
 {
     for (int i = 0 ; i < 4 ; i++) {
@@ -77,7 +77,7 @@ void LockTetromino(const Tetromino& t) {
 void SpawnTetromino(Tetromino& current) {
     current = nextTetromino;
     nextTetromino = Tetromino() ;
-     hasHeldThisTurn = false;
+  //   hasHeldThisTurn = false;
 }
 void MoveTetromino(Tetromino& current, Uint32& lastFallTime, Uint32 fallDelay) {
     Uint32 currentTime = SDL_GetTicks();
@@ -106,7 +106,7 @@ void DropTetromino(Tetromino& current) {
     LockTetromino(current);
     SpawnTetromino(current);
 }
-void HoldTetromino(Tetromino& current) {
+/*void HoldTetromino(Tetromino& current) {
     if (hasHeldThisTurn) return; // Đã hold rồi, không được nữa trong lượt này
 
     if (isHoldEmpty) {
@@ -121,7 +121,7 @@ void HoldTetromino(Tetromino& current) {
 
     hasHeldThisTurn = true; // Đánh dấu đã hold
 }
-
+*/
 
 
 

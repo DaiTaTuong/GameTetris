@@ -21,7 +21,6 @@ Bạn có thể di chuyển khối hình sang trái, sang phải hoặc xuống 
 - Khi chơi thì bạn sẽ dùng các nút lên trên, xuống dưới, trái, phải để điều khiển 1 trong 7 các khối Tetromino. 
 - Khi đầy 1 hàng ngang thì sẽ được tăng điểm, khi ăn nhiều hàng ngang một lúc sẽ càng được nhiều điểm. 
 - Bạn có thể thấy được khối tiếp theo ở ô "NEXT" để có thể chơi như thế nào cho hợp lý. 
-- Nếu như bạn không muốn dùng khối này muốn đổi sang khối NEXT tiếp theo thì bạn có thể nhấn phím "C" để có thể đổi. Hình vẽ của khối sẽ ở ô "HOLD"
 - Nếu như bạn bị thua thì sẽ ngay lập tức thoát khỏi game.
 
 

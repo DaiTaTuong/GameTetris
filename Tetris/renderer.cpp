@@ -108,12 +108,7 @@ void Render::DrawSidePanels() {
     DrawBox(nextX, boxY2, boxWidth, boxHeight,
             {255, 255, 255, 255}, {20, 20, 20, 255});
     RenderText("Score", nextX + 40, boxY2 + 10);
-    RenderText(std::to_string(score), nextX + 40, boxY2 + 50);
-    // Vẽ khung "Hold"
-    DrawBox(holdX, boxY1, boxWidth, boxHeight,
-            {255, 255, 255, 255}, {20, 20, 20, 255});
-    RenderText("Hold", holdX + 50, boxY1 + 10);
-    DrawMiniTetromino(renderer, heldTetromino, holdX + 40, boxY1 + 30 ) ;
+    RenderText(std::to_string(score), nextX + 40, boxY2 + 50) ;
 
 }
 void Render::Present() {
