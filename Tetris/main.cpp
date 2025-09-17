@@ -21,11 +21,6 @@ int main(int argc, char* argv[])
     }
     Tetromino current;
     Uint32 lastFallTime = SDL_GetTicks() ;
-    Uint32 fallDelay = 1000 - level * 500;
-    if(fallDelay < 100)
-    {
-        fallDelay = 100 ;
-    }
 
     while (render.IsRunning()) {
             Uint32 fallDelay = 1000 - level * 50;
@@ -41,7 +36,6 @@ int main(int argc, char* argv[])
         DrawBoard(render.renderer) ;
         if(!IsValidPosition(current))
         {
-            std::cerr << "Game Over!" << std::endl ;
             render.Stop() ;
         }
         render.Present();

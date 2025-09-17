@@ -42,7 +42,7 @@ Render::Render(int width, int height) {
     if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
     std::cerr << "SDL_mixer could not open: " << Mix_GetError() << std::endl;
 }
-    backGroundMusic = Mix_LoadMUS("SoundTetris.mp3") ;
+    backGroundMusic = Mix_LoadMUS("SoundOfTetris.mp3") ;
     if (!backGroundMusic) {
     std::cerr << "Không thể tải nhạc nền: " << Mix_GetError() << std::endl;
 } else {
@@ -109,7 +109,10 @@ void Render::DrawSidePanels() {
             {255, 255, 255, 255}, {20, 20, 20, 255});
     RenderText("Score", nextX + 40, boxY2 + 10);
     RenderText(std::to_string(score), nextX + 40, boxY2 + 50) ;
-
+    // Vẽ khung "Hold"
+    DrawBox(holdX, boxY1, boxWidth, boxHeight,{255, 255, 255, 255}, {20, 20, 20, 255}) ;
+    RenderText("Hold", holdX + 50 , boxY1 + 10) ;
+    DrawMiniTetromino(renderer, heldTetromino, holdX + 40, boxY1 + 30) ;
 }
 void Render::Present() {
     DrawSidePanels() ;

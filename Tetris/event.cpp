@@ -34,6 +34,10 @@ if (event.type == SDL_KEYDOWN) {
         case SDLK_SPACE:
             DropTetromino(current) ;
             break ;
+        case SDLK_c:
+            HoldTetromino(current) ;
+
+            break ;
     }
 }
     }
